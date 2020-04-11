@@ -7,7 +7,7 @@
 x 6. precondition与enpower的结合
 7. precondition与enpower考虑融合成一个条件, 因为反正是类似嘛. 不知道行不行
 8. 多级穿透, 如得先登录, 再充vip, 并得是id为奇数用户, 才能进入vip专属页面.
-    (cacheDestination可能就不是一个Station类型, 而是一个List<Station>类型了
+    (首页做成个list, 点击某项得是vip才能查看)
 9. deep link  (e.g. notification)
 
 
