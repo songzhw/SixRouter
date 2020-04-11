@@ -11,6 +11,7 @@ interface IRouter {
 
 object Router {
     private val registry = hashMapOf<String, Station>()
+    private var cachedStation: Station? = null
 
     fun init() {
         val serviceLoader: ServiceLoader<IRouter> = ServiceLoader.load(IRouter::class.java)
@@ -26,10 +27,15 @@ object Router {
         for (precondition in dest.preconditionList) {
             val isMeet = precondition.precondition()
             if (!isMeet) {
+
                 val failStationName = precondition.failStationName
                 val preconditionStation = registry.get(failStationName)
                     ?: throw RuntimeException("No such Station: $failStationName")
                 clazz = preconditionStation.clazz
+
+                // cache this station
+                cachedStation = dest
+
                 break;
             }
         }
@@ -40,6 +46,10 @@ object Router {
 
     //  for enpower station. (专用于穿透跳转的)
     fun continueNav(context: Context) {
-        //TODO
+        if (cachedStation != null) {
+            nav(context, cachedStation!!.target)
+        } else {
+            throw RuntimeException("There is no cached station in the router")
+        }
     }
 }
