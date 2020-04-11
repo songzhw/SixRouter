@@ -11,7 +11,7 @@ interface IRouter {
 
 
 object Router {
-    val registry = hashMapOf<String, Class<out Activity>>()
+    private val registry = hashMapOf<String, Class<out Activity>>()
 
     fun init() {
         val serviceLoader: ServiceLoader<IRouter> = ServiceLoader.load(IRouter::class.java)
