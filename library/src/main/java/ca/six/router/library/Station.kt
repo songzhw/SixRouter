@@ -10,30 +10,10 @@ import android.app.Activity
  */
 class Station(var target: String, val clazz: Class<out Activity>) {
 
-    @JvmField
-    var enpower = ""
+    val preconditionList: ArrayList<Precondition> = arrayListOf()
 
-    var precondition: (() -> Boolean)? = null
-
-    fun setPrecondition(precondition: () -> Boolean): Station {
-        this.precondition = precondition
-        return this
-    }
-
-    // = = = = = = = = = = precondition = = = = = = = = = =
-    fun setOnPreconditionFail(targetForFailure: String): Station {
-        target = targetForFailure
-        return this
-    }
-
-    // = = = = = = = = = =  enpower = = = = = = = = = =
-    fun setEnpower(enpower: String): Station {
-        this.enpower = enpower
-        return this
-    }
-
-    fun getEnpower(): String {
-        return enpower;
+    fun addPrecondition(precondition: Precondition) {
+        preconditionList.add(precondition)
     }
 }
 

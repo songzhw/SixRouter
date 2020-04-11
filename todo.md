@@ -10,3 +10,12 @@ x 6. precondition与enpower的结合
     (cacheDestination可能就不是一个Station类型, 而是一个List<Station>类型了
 9. deep link  (e.g. notification)
 
+
+
+=================
+测试用例
+1. 登录后进入item detail
+
+2. 登录vip, 最终进入no pay
+
+3. 登录pay, 最终进入pay
