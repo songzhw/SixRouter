@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ca.six.router.demo.payment">
+
+    <application>
+        <activity android:name=".PayActivity" />
+    </application>
+
+</manifest>

@@ -1,2 +1,6 @@
 rootProject.name='SixRouter'
 include ':app'
+include ':library'
+include ':mall'
+include ':payment'
+include ':common'
