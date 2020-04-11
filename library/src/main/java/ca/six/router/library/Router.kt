@@ -24,6 +24,7 @@ object Router {
         val dest = registry.get(destination) ?: return
         var clazz = dest.clazz
 
+        var isAllMeet = true
         for (precondition in dest.preconditionList) {
             val isMeet = precondition.precondition()
             if (!isMeet) {
@@ -36,8 +37,14 @@ object Router {
                 // cache this station
                 cachedStation = dest
 
+                isAllMeet = false;
+
                 break;
             }
+        }
+
+        if (isAllMeet) {
+            cachedStation = null
         }
 
         val intent = Intent(ctx, clazz)
