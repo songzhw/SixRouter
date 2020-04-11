@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_tv_btn) {
 
         tvInfo.text = "Mall Online"
         btnAction.setOnClickListener {
-            Router.nav(this, "ItemDetail")
+            Router.nav(this, LOGIN)
         }
     }
 }
