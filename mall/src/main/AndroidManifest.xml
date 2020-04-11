@@ -2,7 +2,7 @@
     package="ca.six.router.demo.mall">
 
     <application>
-        <activity android:name=".ItemDetailActivity" />
+        <activity android:name=".biz.ItemDetailActivity" />
     </application>
 
 </manifest>

@@ -2,7 +2,7 @@
     package="ca.six.router.demo.payment">
 
     <application>
-        <activity android:name=".PayActivity" />
+        <activity android:name=".biz.PayActivity" />
     </application>
 
 </manifest>

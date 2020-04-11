@@ -1,2 +1,2 @@
-ca.six.router.demo.mall.MallRouter
-ca.six.router.demo.payment.PayRouter
+ca.six.router.demo.mall.core.MallRouter
+ca.six.router.demo.payment.core.PayRouter
