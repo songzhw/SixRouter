@@ -1,5 +1,6 @@
 package ca.six.router.demo.app.biz
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ca.six.router.demo.app.R
@@ -22,7 +23,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_tv_btn) {
             Router.nav(this, ITEM_DETAIL, args)
         }
         btnTourist.setOnClickListener {
-            Router.nav(this, TOURIST, args)
+            val flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            Router.nav(this, TOURIST, args, flags)
         }
     }
 }
