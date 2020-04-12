@@ -52,6 +52,7 @@ object Router {
         val intent = Intent(ctx, clazz)
         if (isAllMeet) {
             cachedStation = null
+
             if (cachedArgs != null) {
                 intent.putExtras(cachedArgs!!)
                 cachedArgs = null
@@ -60,22 +61,20 @@ object Router {
                 intent.addFlags(cachedIntentFlag)
                 cachedIntentFlag = -1
             }
-        }
 
-
-        // TODO 这有问题, 变得跳Login时也带上参数了
-        // 正常跳转时没有cachedArgs, 就使用args
-        if (args != null) {
-            intent.putExtras(args)
-        }
-        if (flag > 0) {
-            intent.addFlags(flag)
+            // 正常跳转时没有cachedArgs, 就使用args
+            if (args != null) {
+                intent.putExtras(args)
+            }
+            if (flag > 0) {
+                intent.addFlags(flag)
+            }
         }
 
         ctx.startActivity(intent)
     }
 
-    //  for enpower station. (专用于穿透跳转的)
+    // 专用于穿透跳转的
     fun continueNav(context: Context) {
         if (cachedStation != null) {
             nav(context, cachedStation!!.target)
