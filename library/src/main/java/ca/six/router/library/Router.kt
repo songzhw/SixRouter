@@ -2,6 +2,7 @@ package ca.six.router.library
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import java.util.*
 
 interface IRouter {
@@ -11,7 +12,10 @@ interface IRouter {
 
 object Router {
     private val registry = hashMapOf<String, Station>()
+
     private var cachedStation: Station? = null
+    private var cachedArgs: Bundle? = null
+    private var cachedIntentFlag = -1
 
     fun init() {
         val serviceLoader: ServiceLoader<IRouter> = ServiceLoader.load(IRouter::class.java)
@@ -34,7 +38,7 @@ object Router {
                     ?: throw RuntimeException("No such Station: $failStationName")
                 clazz = preconditionStation.clazz
 
-                // cache this station
+                // cache this station, bundle, and intent flag
                 cachedStation = dest
 
                 isAllMeet = false;
@@ -48,6 +52,15 @@ object Router {
         }
 
         val intent = Intent(ctx, clazz)
+        // TODO what if there is no piercing router, jsut a normal nav(no cachedArgs?)?
+        if (cachedArgs != null) {
+            intent.putExtras(cachedArgs!!)
+            cachedArgs = null
+        }
+        if (cachedIntentFlag != -1) {
+            intent.addFlags(cachedIntentFlag)
+            cachedIntentFlag = -1
+        }
         ctx.startActivity(intent)
     }
 

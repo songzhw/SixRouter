@@ -6,7 +6,7 @@
 ✔ 5. (穿透跳转) [enpower] go to page2 if logged in, otherwise login first and go to page2 automatically
 x 6. precondition与enpower的结合
 ✔ 7. precondition与enpower考虑融合成一个条件, 因为反正是类似嘛. 不知道行不行
-8. deep link  (e.g. notification)
+✔ 8. deep link  (e.g. notification)
 9. 多级穿透, 如得先登录, 再充vip, 并得是id为奇数用户, 才能进入vip专属页面.
     (首页做成个list, 点击某项得是vip才能查看)
 
