@@ -24,7 +24,7 @@ object Router {
         }
     }
 
-    fun nav(ctx: Context, destination: String) {
+    fun nav(ctx: Context, destination: String, args: Bundle? = null, flag: Int = -1) {
         val dest = registry.get(destination) ?: return
         var clazz = dest.clazz
 
@@ -40,6 +40,8 @@ object Router {
 
                 // cache this station, bundle, and intent flag
                 cachedStation = dest
+                cachedArgs = args
+                cachedIntentFlag = flag
 
                 isAllMeet = false;
 
@@ -52,15 +54,23 @@ object Router {
         }
 
         val intent = Intent(ctx, clazz)
-        // TODO what if there is no piercing router, jsut a normal nav(no cachedArgs?)?
+        // piercing navigation就会有cachedArgs不为空
         if (cachedArgs != null) {
             intent.putExtras(cachedArgs!!)
             cachedArgs = null
         }
-        if (cachedIntentFlag != -1) {
+        // 正常跳转时没有cachedArgs, 就使用args
+        if (args != null) {
+            intent.putExtras(args)
+        }
+        if (cachedIntentFlag > 0) {
             intent.addFlags(cachedIntentFlag)
             cachedIntentFlag = -1
         }
+        if (flag > 0) {
+            intent.addFlags(flag)
+        }
+
         ctx.startActivity(intent)
     }
 

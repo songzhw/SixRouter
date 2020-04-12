@@ -11,9 +11,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_tv_btn) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val args = Bundle()
+        args.putString("name", "pet - cat")
+
         tvInfo.text = "Mall Online"
         btnAction.setOnClickListener {
-            Router.nav(this, ITEM_DETAIL)
+            Router.nav(this, ITEM_DETAIL, args)
         }
     }
 }

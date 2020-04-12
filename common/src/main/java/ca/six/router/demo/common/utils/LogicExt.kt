@@ -1,4 +1,4 @@
-package ca.six.router.demo.app
+package ca.six.router.demo.common.utils
 
 import android.app.Activity
 
