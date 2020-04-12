@@ -49,23 +49,24 @@ object Router {
             }
         }
 
+        val intent = Intent(ctx, clazz)
         if (isAllMeet) {
             cachedStation = null
+            if (cachedArgs != null) {
+                intent.putExtras(cachedArgs!!)
+                cachedArgs = null
+            }
+            if (cachedIntentFlag > 0) {
+                intent.addFlags(cachedIntentFlag)
+                cachedIntentFlag = -1
+            }
         }
 
-        val intent = Intent(ctx, clazz)
-        // piercing navigation就会有cachedArgs不为空
-        if (cachedArgs != null) {
-            intent.putExtras(cachedArgs!!)
-            cachedArgs = null
-        }
+
+        // TODO 这有问题, 变得跳Login时也带上参数了
         // 正常跳转时没有cachedArgs, 就使用args
         if (args != null) {
             intent.putExtras(args)
-        }
-        if (cachedIntentFlag > 0) {
-            intent.addFlags(cachedIntentFlag)
-            cachedIntentFlag = -1
         }
         if (flag > 0) {
             intent.addFlags(flag)
