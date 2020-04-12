@@ -1,7 +1,8 @@
-package ca.six.router.demo.app
+package ca.six.router.demo.app.biz
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import ca.six.router.demo.app.R
 import ca.six.router.demo.common.biz.login.ThisUser
 import ca.six.router.demo.common.biz.login.User
 import ca.six.router.library.Router
@@ -16,6 +17,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
             ThisUser.setUser(User(name))
 
             Router.continueNav(this)
+            this.finish()
         }
     }
 

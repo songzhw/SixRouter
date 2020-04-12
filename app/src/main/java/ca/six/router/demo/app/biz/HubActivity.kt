@@ -1,7 +1,8 @@
-package ca.six.router.demo.app
+package ca.six.router.demo.app.biz
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import ca.six.router.demo.app.MAIN
 import ca.six.router.demo.common.utils.extra_
 import ca.six.router.library.Router
 

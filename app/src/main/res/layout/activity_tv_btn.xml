@@ -18,5 +18,11 @@
         android:id="@+id/btnAction"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="action" />
+        android:text="Item Detail" />
+
+    <Button
+        android:id="@+id/btnTourist"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Tourist" />
 </LinearLayout>
