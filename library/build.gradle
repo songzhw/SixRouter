@@ -34,3 +34,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+
+apply plugin: 'com.novoda.bintray-release'
+publish {
+    userOrg = 'songzhw'      //bintray.com用户名
+    groupId = 'ca.six.router.library'  //jcenter上的路径
+    artifactId = 'SixRouter'   //项目名称
+    publishVersion = '1.0.0' //版本号
+    desc = "Router for Android" //描述，不重要
+    website = 'https://github.com/songzhw/SixRouter'  //网站，不重要
+}
