@@ -6,14 +6,14 @@ import android.os.Bundle
 import java.util.*
 
 interface IRouter {
-    fun registerRoute(map: HashMap<String, Station>)
+    fun registerRoute(map: HashMap<String, RouteMeta>)
 }
 
 
 object Router {
-    private val registry = hashMapOf<String, Station>()
+    private val registry = hashMapOf<String, RouteMeta>()
 
-    private var cachedStation: Station? = null
+    private var cachedMeta: RouteMeta? = null
     private var cachedArgs: Bundle? = null
     private var cachedIntentFlag = -1
 
@@ -39,7 +39,7 @@ object Router {
                 clazz = preconditionStation.clazz
 
                 // cache this station, bundle, and intent flag
-                cachedStation = dest
+                cachedMeta = dest
                 cachedArgs = args
                 cachedIntentFlag = flag
 
@@ -51,7 +51,7 @@ object Router {
 
         val intent = Intent(ctx, clazz)
         if (isAllMeet) {
-            cachedStation = null
+            cachedMeta = null
 
             if (cachedArgs != null) {
                 intent.putExtras(cachedArgs!!)
@@ -76,8 +76,8 @@ object Router {
 
     // 专用于穿透跳转的
     fun continueNav(context: Context) {
-        if (cachedStation != null) {
-            nav(context, cachedStation!!.target)
+        if (cachedMeta != null) {
+            nav(context, cachedMeta!!.target)
         } else {
             throw RuntimeException("There is no cached station in the router")
         }
