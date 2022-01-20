@@ -34,4 +34,18 @@
         android:layout_height="50dp"
         android:textAllCaps="false"
         android:text="Pay my saved order" />
+
+
+    <CheckBox android:id="@+id/cbLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="logged in?"
+        />
+
+    <CheckBox android:id="@+id/cbMethods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="pay method?"
+        />
+
 </LinearLayout>
