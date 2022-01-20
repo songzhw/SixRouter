@@ -35,7 +35,10 @@ object Router {
 
                 val failStationName = precondition.destinationOnFail
                 val preconditionStation = registry.get(failStationName)
-                    ?: throw RuntimeException("No such Station: $failStationName")
+                if(preconditionStation == null){
+                    println("szw error: No such activity for this route(failStationName) : $failStationName")
+                    return
+                }
                 clazz = preconditionStation.clazz
 
                 // cache this station, bundle, and intent flag

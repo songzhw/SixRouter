@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import ca.six.router.demo.app.R
 import ca.six.router.demo.app.TOURIST
 import ca.six.router.demo.mall.core.MALL_LIST
+import ca.six.router.demo.payment.core.PAY
 import ca.six.router.library.Router
 import kotlinx.android.synthetic.main.activity_tv_btn.*
 
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_tv_btn) {
         btnTourist.setOnClickListener {
             val flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             Router.nav(this, TOURIST, args, flags)
+        }
+        btnPay.setOnClickListener {
+            Router.nav(this, PAY)
         }
     }
 }

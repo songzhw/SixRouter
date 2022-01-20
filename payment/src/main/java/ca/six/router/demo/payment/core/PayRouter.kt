@@ -16,7 +16,7 @@ class PayRouter : IRouter {
         map[NO_PAY] = RouteMeta(NO_PAY, NoPayMethodActivity::class.java)
 
         map[PAY] = RouteMeta(PAY, PayActivity::class.java)
-            .addPrecondition(Precondition(UserSession::hasLoggedIn, "login"))
+            .addPrecondition(Precondition(UserSession::hasLoggedIn, "Login"))
             .addPrecondition(Precondition(UserSession::hasPaymentMethod, NO_PAY))
     }
 
