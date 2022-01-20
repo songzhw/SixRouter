@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("ca.six.router.demo.mall.test", appContext.packageName)
+        assertEquals("ca.six.router.demo.mall", appContext.packageName)
     }
 }

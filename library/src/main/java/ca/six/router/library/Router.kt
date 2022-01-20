@@ -33,7 +33,7 @@ object Router {
             val isMeet = precondition.precondition()
             if (!isMeet) {
 
-                val failStationName = precondition.failStationName
+                val failStationName = precondition.destinationOnFail
                 val preconditionStation = registry.get(failStationName)
                     ?: throw RuntimeException("No such Station: $failStationName")
                 clazz = preconditionStation.clazz
