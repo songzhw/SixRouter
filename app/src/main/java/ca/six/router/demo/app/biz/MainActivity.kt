@@ -40,19 +40,22 @@ class MainActivity : AppCompatActivity(R.layout.activity_tv_btn) {
             if(isChecked){
                 val methods = if(hasPay) arrayListOf("Paypal") else null
                 UserSession.setUser(User("one", true, methods))
+                println("szw checked1: ${UserSession.hasLoggedIn()}")
             } else {
                 UserSession.setUser(null)
+                println("szw unchecked1: ${UserSession.hasLoggedIn()}")
             }
             isLogin = isChecked
         }
 
-        cbLogin.setOnCheckedChangeListener { buttonView, isChecked ->
+        cbMethods.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked){
                 UserSession.setPayMethods("credit card")
             } else {
                 UserSession.setPayMethods(null)
             }
             hasPay = isChecked
+            println("szw check2($isChecked) : ${UserSession.hasPaymentMethod()}")
         }
     }
 }

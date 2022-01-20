@@ -3,6 +3,7 @@ package ca.six.router.library
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.system.StructUtsname
 import java.util.*
 
 interface IRouter {
@@ -31,6 +32,7 @@ object Router {
         var isAllMeet = true
         for (precondition in dest.preconditionList) {
             val isMeet = precondition.precondition()
+            println("szw precondition = $isMeet (${precondition.precondition})")
             if (!isMeet) {
 
                 val failStationName = precondition.destinationOnFail

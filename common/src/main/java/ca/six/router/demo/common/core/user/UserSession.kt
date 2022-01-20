@@ -12,14 +12,24 @@ object UserSession {
             me?.payMethods = null
             return
         }
-        me?.payMethods?.add(pay)
+        if (me == null) {
+            return
+        }
+        if (me!!.payMethods == null) {
+            me!!.payMethods = ArrayList<String>()
+        }
+        me!!.payMethods?.add(pay)
     }
 
     fun hasLoggedIn() = me != null
 
     fun isVip() = me?.isVip ?: false
 
-    fun hasPaymentMethod() = me?.payMethods?.isEmpty() ?: false
+    fun hasPaymentMethod() : Boolean {
+        if (me == null) return false;
+        if (me!!.payMethods == null) return false;
+        return !me!!.payMethods!!.isEmpty()
+    }
 
     override fun toString() = "ThisUser[name=${me?.name}]"
 
