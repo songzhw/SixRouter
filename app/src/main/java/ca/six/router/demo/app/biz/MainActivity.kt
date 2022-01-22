@@ -26,14 +26,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_tv_btn) {
 
         tvInfo.text = "Mall Online"
         btnAction.setOnClickListener {
-            Router.nav(this, MALL_LIST, args)
+            Router.open(this, MALL_LIST, args)
         }
         btnTourist.setOnClickListener {
             val flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            Router.nav(this, TOURIST, args, flags)
+            Router.open(this, TOURIST, args, flags)
         }
         btnPay.setOnClickListener {
-            Router.nav(this, PAY)
+            Router.open(this, PAY)
         }
 
         cbLogin.setOnCheckedChangeListener { buttonView, isChecked ->

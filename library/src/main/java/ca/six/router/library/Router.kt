@@ -3,7 +3,6 @@ package ca.six.router.library
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.system.StructUtsname
 import java.util.*
 
 interface IRouter {
@@ -25,7 +24,7 @@ object Router {
         }
     }
 
-    fun nav(ctx: Context, destination: String, args: Bundle? = null, flag: Int = -1) {
+    fun open(ctx: Context, destination: String, args: Bundle? = null, flag: Int = -1) {
         val dest = registry.get(destination) ?: return
         var clazz = dest.clazz
 
@@ -37,7 +36,7 @@ object Router {
 
                 val failStationName = precondition.destinationOnFail
                 val preconditionStation = registry.get(failStationName)
-                if(preconditionStation == null){
+                if (preconditionStation == null) {
                     println("szw error: No such activity for this route(failStationName) : $failStationName")
                     return
                 }
@@ -79,10 +78,20 @@ object Router {
         ctx.startActivity(intent)
     }
 
+    fun openIfOnline(ctx: Context, destination: String, args: Bundle? = null, flag: Int = -1) {
+        /*
+        if(online(ctx){
+            open(ctx, destination, args, flags)
+        } else {
+            showNoInternetDialog()
+        }
+         */
+    }
+
     // 专用于穿透跳转的
     fun continueNav(context: Context) {
         if (cachedMeta != null) {
-            nav(context, cachedMeta!!.target)
+            open(context, cachedMeta!!.target)
         } else {
             throw RuntimeException("There is no cached station in the router")
         }

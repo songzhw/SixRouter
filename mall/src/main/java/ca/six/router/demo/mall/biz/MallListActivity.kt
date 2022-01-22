@@ -16,7 +16,7 @@ class MallListActivity : AppCompatActivity(R.layout.activity_mall_tv_btn) {
         tvInfo.text = name
         btnAction.text = "Pay"
         btnAction.setOnClickListener {
-            Router.nav(this, "Pay")
+            Router.open(this, "Pay")
         }
     }
 }

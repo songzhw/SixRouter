@@ -24,7 +24,7 @@ class DeepLinkActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Router.nav(this, destination)
+        Router.open(this, destination)
         this.finish()
     }
 
