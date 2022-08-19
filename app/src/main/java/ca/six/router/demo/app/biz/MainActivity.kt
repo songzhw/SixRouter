@@ -3,11 +3,13 @@ package ca.six.router.demo.app.biz
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import ca.six.router.demo.app.R
 import ca.six.router.demo.app.TOURIST
 import ca.six.router.demo.common.core.user.User
 import ca.six.router.demo.common.core.user.UserSession
 import ca.six.router.demo.mall.core.MALL_LIST
+import ca.six.router.demo.payment.core.GOOGLE_PAY
 import ca.six.router.demo.payment.core.PAY
 import ca.six.router.library.Router
 import kotlinx.android.synthetic.main.activity_tv_btn.*
@@ -34,6 +36,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_tv_btn) {
         }
         btnPay.setOnClickListener {
             Router.open(this, PAY)
+        }
+        btnGp.setOnClickListener {
+            val data = bundleOf("userId" to 3)
+            Router.openForResult(this, GOOGLE_PAY, args = data) {
+                println("szw onCallback : ${it.data}")
+            }
         }
 
         cbLogin.setOnCheckedChangeListener { buttonView, isChecked ->

@@ -5,6 +5,7 @@
     <application>
         <activity android:name=".biz.PayActivity" />
         <activity android:name=".biz.NoPayMethodActivity"/>
+        <activity android:name=".biz.GooglePayActivity"/>
     </application>
 
 </manifest>

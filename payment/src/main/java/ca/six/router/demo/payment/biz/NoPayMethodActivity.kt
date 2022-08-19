@@ -10,6 +10,6 @@ class NoPayMethodActivity : AppCompatActivity(R.layout.activity_pay_tv_btn) {
         super.onCreate(savedInstanceState)
 
         tvInfo.text = "You have not add payment method yet"
-        btnAction.text = "Go add one payment method"
+        btnAction.text = "Go add one payment method (not implemented yet)"
     }
 }
