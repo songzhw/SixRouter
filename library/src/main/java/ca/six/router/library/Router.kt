@@ -3,6 +3,11 @@ package ca.six.router.library
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 interface IRouter {
@@ -24,8 +29,20 @@ object Router {
         }
     }
 
+    fun openForResult(ctx: Context, destination: String, args: Bundle? = null, flag: Int = -1, callback: ActivityResultCallback<ActivityResult>) {
+        val activity = ctx as? AppCompatActivity ?: return
+        val intent = getIntent(ctx, destination, args, flag) ?: return
+        val navigation = activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult(), callback)
+        navigation.launch(intent)
+    }
+
     fun open(ctx: Context, destination: String, args: Bundle? = null, flag: Int = -1) {
-        val dest = registry.get(destination) ?: return
+        val intent = getIntent(ctx, destination, args, flag) ?: return
+        ctx.startActivity(intent)
+    }
+
+    private fun getIntent(ctx: Context, destination: String, args: Bundle? = null, flag: Int = -1): Intent?{
+        val dest = registry.get(destination) ?: return null
         var clazz = dest.clazz
 
         var isAllMeet = true
@@ -38,7 +55,7 @@ object Router {
                 val preconditionStation = registry.get(failStationName)
                 if (preconditionStation == null) {
                     println("szw error: No such activity for this route(failStationName) : $failStationName")
-                    return
+                    return null
                 }
                 clazz = preconditionStation.clazz
 
@@ -74,8 +91,7 @@ object Router {
                 intent.addFlags(flag)
             }
         }
-
-        ctx.startActivity(intent)
+        return intent
     }
 
     fun openIfOnline(ctx: Context, destination: String, args: Bundle? = null, flag: Int = -1) {
