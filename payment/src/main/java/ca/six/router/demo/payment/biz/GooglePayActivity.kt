@@ -15,8 +15,9 @@ class GooglePayActivity : AppCompatActivity(R.layout.activity_pay_tv_btn) {
         tvInfo.text = "bind to Google Play?"
         btnAction.setOnClickListener {
             val itt = Intent()
-            itt.putExtra("isBind", userId % 2 == 0)
+            itt.putExtra("isBind", userId +20)
             setResult(RESULT_OK, itt)
+            this.finish()
         }
     }
 }

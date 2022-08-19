@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
@@ -27,13 +28,6 @@ object Router {
         for (service in serviceLoader) {
             service.registerRoute(registry)
         }
-    }
-
-    fun openForResult(ctx: Context, destination: String, args: Bundle? = null, flag: Int = -1, callback: ActivityResultCallback<ActivityResult>) {
-        val activity = ctx as? AppCompatActivity ?: return
-        val intent = getIntent(ctx, destination, args, flag) ?: return
-        val navigation = activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult(), callback)
-        navigation.launch(intent)
     }
 
     fun open(ctx: Context, destination: String, args: Bundle? = null, flag: Int = -1) {
@@ -111,5 +105,12 @@ object Router {
         } else {
             throw RuntimeException("There is no cached station in the router")
         }
+    }
+
+    // = = = = = = = = = = Activity Result = = = = = = = = = =
+
+    fun openForResult(ctx: Context, destination: String, args: Bundle? = null, flag: Int = -1, activityResultLauncher: ActivityResultLauncher<Intent>) {
+        val intent = getIntent(ctx, destination, args, flag) ?: return
+        activityResultLauncher.launch(intent)
     }
 }

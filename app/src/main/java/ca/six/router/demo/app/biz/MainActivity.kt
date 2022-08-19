@@ -2,6 +2,7 @@ package ca.six.router.demo.app.biz
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import ca.six.router.demo.app.R
@@ -37,11 +38,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_tv_btn) {
         btnPay.setOnClickListener {
             Router.open(this, PAY)
         }
+
+
+        val ar = this.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            println("szw onCallback : ${it.data?.getIntExtra("isBind", -1)}")
+        }
         btnGp.setOnClickListener {
-            val data = bundleOf("userId" to 3)
-            Router.openForResult(this, GOOGLE_PAY, args = data) {
-                println("szw onCallback : ${it.data}")
-            }
+            val data = bundleOf("userId" to 6)
+            Router.openForResult(this, GOOGLE_PAY, args = data, activityResultLauncher = ar)
         }
 
         cbLogin.setOnCheckedChangeListener { buttonView, isChecked ->
