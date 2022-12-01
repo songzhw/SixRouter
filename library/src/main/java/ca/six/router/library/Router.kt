@@ -114,3 +114,15 @@ object Router {
         activityResultLauncher.launch(intent)
     }
 }
+/*
+不使用lambda, 即`openForResult(..., result: Lambda)`, 而要用ActivityResultLauncher的原因:
+
+是用lambda就会有crash:
+```kotlin
+java.lang.IllegalStateException:
+  LifecycleOwner MainActivity is attempting to register
+  while current state is RESUMED.
+  LifecycleOwners must call register before they are STARTED.
+```
+
+ */
