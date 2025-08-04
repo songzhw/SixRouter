@@ -23,6 +23,7 @@
         <activity android:name=".views.fragments.FragmentHostActivity"/>
         <activity android:name=".biz.sessions.LoginPage"/>
         <activity android:name=".biz.account.MyAccountPage"/>
+        <activity android:name=".biz.detail.showcase.ShowcaseLandingPage"/>
 
     </application>
 
