@@ -23,6 +23,8 @@
       * 无, guest whitelist页, -> home (set country) -> destination
         * guest blacklist页, -> home (set country) -> login -> destination
 
+12. FF条件来自于后台(非Firebase.FF), 这时如何走要async, 不是立马能得到的, 这个就麻烦了
+
 => 其实9,  10, 11是指有多个precondition的时候怎么办?
 而6,7,8则是多条件多结果的可能重复的一组
 
