@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Router1">
 
-        <activity android:name=".LauncherPage" android:exported="true">
+        <activity android:name=".biz.sessions.LauncherPage" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,6 +20,10 @@
         </activity>
 
         <activity android:name=".views.bottomsheet.BottomSheetHostActivity"/>
+        <activity android:name=".biz.FragmentHostActivity"/>
+        <activity android:name=".biz.sessions.LoginPage"/>
+        <activity android:name=".biz.account.MyAccountPage"/>
+
     </application>
 
 </manifest>
