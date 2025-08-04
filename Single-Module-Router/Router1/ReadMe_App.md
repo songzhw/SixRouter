@@ -4,6 +4,7 @@
 1. 普通跳转
 2. 带参数跳
 3. fragment跳
+   3.1 FramgnetType改为FragmentMeta, 彻底融入Router体系
 4. bottomSheet跳
 5. deeplink跳
 
