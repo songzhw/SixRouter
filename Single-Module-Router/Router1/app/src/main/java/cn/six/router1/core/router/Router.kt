@@ -1,6 +1,6 @@
 package cn.six.router1.core.router
 
-object Router {
+class Router {
     fun init() {
 
     }

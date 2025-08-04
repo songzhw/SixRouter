@@ -38,3 +38,8 @@ session相关: splash, login
 
 [guest whitelist]: home, new/old/showcase detail
 [guest blacklist]: myAccount, 
+
+## 3. BottomSheet
+1). deeplink跳到sheet页, 按back会如何?
+    -> 要
+2). 

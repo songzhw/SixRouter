@@ -1,0 +1,6 @@
+package cn.six.router1.biz
+
+object AppConstants {
+    const val BOTTOM_SHEET_PAGE = "BOTTOM_SHEET_PAGE"
+    const val DEEPLINK = "DEEPLINK_URI"
+}

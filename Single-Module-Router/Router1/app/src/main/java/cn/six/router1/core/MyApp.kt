@@ -6,10 +6,12 @@ import cn.six.router1.core.di.coreModule
 import cn.six.router1.core.router.Router
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
 import org.koin.core.context.startKoin
 
 
-class MyApp : Application()/*, ImageLoaderFactory*/ {
+class MyApp : Application(), KoinComponent/*, ImageLoaderFactory*/ {
     protected val disposables: CompositeDisposable = CompositeDisposable()
 
     companion object {
@@ -27,7 +29,8 @@ class MyApp : Application()/*, ImageLoaderFactory*/ {
             modules(coreModule, bizModule)
         }
 
-        Router.init()
+        val router = get<Router>()
+        router.init()
 
     }
 
