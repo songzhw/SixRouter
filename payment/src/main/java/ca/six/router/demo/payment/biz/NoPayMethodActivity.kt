@@ -3,13 +3,17 @@ package ca.six.router.demo.payment.biz
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ca.six.router.demo.payment.R
-import kotlinx.android.synthetic.main.activity_pay_tv_btn.*
+import ca.six.router.demo.payment.databinding.ActivityPayTvBtnBinding
 
-class NoPayMethodActivity : AppCompatActivity(R.layout.activity_pay_tv_btn) {
+class NoPayMethodActivity : AppCompatActivity() {
+    private lateinit var vb: ActivityPayTvBtnBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        vb = ActivityPayTvBtnBinding.inflate(layoutInflater)
+        setContentView(vb.root)
 
-        tvInfo.text = "You have not add payment method yet"
-        btnAction.text = "Go add one payment method (not implemented yet)"
+        vb.tvInfo.text = "You have not add payment method yet"
+        vb.btnAction.text = "Go add one payment method (not implemented yet)"
     }
 }
