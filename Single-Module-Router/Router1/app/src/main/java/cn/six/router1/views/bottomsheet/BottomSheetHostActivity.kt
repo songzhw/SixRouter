@@ -6,12 +6,8 @@ import androidx.core.os.bundleOf
 import cn.six.router1.biz.AppConstants
 import cn.six.router1.core.BasePage
 import cn.six.router1.core.router.BottomSheetMeta
-import cn.six.router1.core.router.Router
-import org.koin.android.ext.android.inject
 
 class BottomSheetHostActivity : BasePage() {
-    protected val router: Router by inject()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
