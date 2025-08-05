@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import cn.six.router1.core.router.Router
 import cn.six.router1.core.router.Signpost
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import org.koin.android.ext.android.inject
 
 open class BaseFragment(val isLog: Boolean = false) : Fragment() {
+    protected val router: Router by inject()
     protected val disposables: CompositeDisposable = CompositeDisposable()
 
     override fun onDetach() {

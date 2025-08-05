@@ -14,10 +14,12 @@ class FragmentHostActivity : BasePage() {
         vb = LayoutNavBinding.inflate(layoutInflater)
         setContentView(vb.root)
 
-        val path = intent.extras?.getSerializable("FRAGMENT_CANONICAL_PATH)")
+        val path = intent.extras?.getSerializable("FRAGMENT_CANONICAL_PATH")
         if (path != null && path is FragmentMeta) {
             intent.removeExtra("FRAGMENT_CANONICAL_PATH")
+            println("szww path = $path")
             val targetFragment = path.classType.newInstance()
+            println("szww next = $targetFragment")
             targetFragment?.arguments = intent.extras
             this.replace(targetFragment, R.id.content, false)
         }
