@@ -1,13 +1,10 @@
 package cn.six.router1.biz.sessions
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import cn.six.router1.R
 import cn.six.router1.core.BasePage
 import cn.six.router1.core.router.ROUTE_LOGIN
 import cn.six.router1.databinding.AfLauncherBinding
-import cn.six.router1.views.fragments.FragmentType
+import cn.six.router1.views.fragments.FragmentMeta
 
 class LauncherPage : BasePage() {
     private lateinit var vb: AfLauncherBinding
@@ -17,7 +14,7 @@ class LauncherPage : BasePage() {
         vb = AfLauncherBinding.inflate(layoutInflater)
         setContentView(vb.root)
 
-        vb.btnHome.setOnClickListener { router.open(FragmentType.HOME) }
+        vb.btnHome.setOnClickListener { router.open(FragmentMeta.HOME) }
         vb.btnLogin.setOnClickListener { router.open(ROUTE_LOGIN) }
     }
 }

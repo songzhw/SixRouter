@@ -5,7 +5,7 @@ import cn.six.router1.biz.detail.oldd.LegacyDetailFragment
 import cn.six.router1.biz.home.HomeFragment
 import cn.six.router1.biz.home.RedeemFragment
 
-enum class FragmentType(
+enum class FragmentMeta(
     name: String = "",
     val classType: Class<out Fragment?>
 ) {
