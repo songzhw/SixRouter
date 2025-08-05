@@ -3,21 +3,20 @@ package cn.six.router1.biz.sessions
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import cn.six.router1.R
+import cn.six.router1.core.BasePage
+import cn.six.router1.databinding.AfLauncherBinding
 
-class LauncherPage : AppCompatActivity() {
+class LauncherPage : BasePage() {
+    private lateinit var vb: AfLauncherBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        vb = AfLauncherBinding.inflate(layoutInflater)
+        setContentView(vb.root)
 
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        vb.btnHome.setOnClickListener {  }
+        vb.btnLogin.setOnClickListener {  }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 }

@@ -2,22 +2,22 @@ package cn.six.router1.core
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import cn.six.router1.core.router.Router
 import cn.six.router1.core.router.Signpost
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.SerialDisposable
+import org.koin.android.ext.android.inject
 
 open class BasePage : AppCompatActivity {
-    var isLog =
-        false // 'val' on secondary constructor parameter is not allowed. 所以只能自己写this.x = x了.
-
-    // 支持两种构造函数
+    // 支持多种构造函数
     constructor() : super()
     constructor(resId: Int) : super(resId)
-    constructor(isLog: Boolean = false) : super() {
-        this.isLog = isLog; }
+    constructor(isLog: Boolean = false) : super() { this.isLog = isLog; }
 
-    val disposables: CompositeDisposable = CompositeDisposable()
+    var isLog = false // 'val' on secondary constructor parameter is not allowed. 所以只能自己写this.x = x了.
+    protected val disposables: CompositeDisposable = CompositeDisposable()
     protected val serialDisposables: SerialDisposable = SerialDisposable()
+    protected val router : Router by inject()
 
     override fun onDestroy() {
         disposables.dispose()

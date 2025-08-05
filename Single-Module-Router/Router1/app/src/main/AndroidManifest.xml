@@ -19,6 +19,18 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".biz.deeplink.DeeplinkPage"
+            android:exported="true"
+            android:theme="@style/Theme.Router1.Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="szw" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".views.bottomsheet.BottomSheetHostActivity"/>
         <activity android:name=".views.fragments.FragmentHostActivity"/>
         <activity android:name=".biz.sessions.LoginPage"/>
