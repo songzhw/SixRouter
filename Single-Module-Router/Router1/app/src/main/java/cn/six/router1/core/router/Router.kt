@@ -4,7 +4,9 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import cn.six.router1.biz.AppConstants
 import cn.six.router1.core.MyApp
+import cn.six.router1.views.fragments.FragmentHostActivity
 import cn.six.router1.views.fragments.FragmentType
 
 class Router {
@@ -22,7 +24,20 @@ class Router {
         if(destination == null) throw RuntimeException("no such route : $targetId")
 
         val intent = Intent(context, destination.clazz)
+        configIntent(intent)
+        context?.startActivity(intent)
+    }
 
+    fun open(
+        fragment: FragmentType, args: Bundle? = null, context: Context? = MyApp.app(), intentFlag: Int = -1
+    ) {
+        val intent = Intent(context, FragmentHostActivity::class.java)
+        intent.putExtra("FRAGMENT_CANONICAL_PATH", fragment)
+        configIntent(intent)
+        context?.startActivity(intent)
+    }
+
+    private fun configIntent(intent: Intent, args: Bundle? = null, context: Context? = MyApp.app(), intentFlag: Int = -1) {
         var flag = intentFlag
         if (context !is Activity) {
             flag = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -34,13 +49,5 @@ class Router {
         if (args != null) {
             intent.putExtras(args)
         }
-
-        context?.startActivity(intent)
-    }
-
-    fun open(
-        fragment: FragmentType, args: Bundle? = null, context: Context? = MyApp.app(), intentFlag: Int = -1
-    ) {
-
     }
 }
